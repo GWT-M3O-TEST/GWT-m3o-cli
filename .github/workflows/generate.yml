@@ -1,7 +1,7 @@
 name: Build M3O CLI
 on:
   repository_dispatch:
-    types: [build_publish_CLI]
+    types: [build_publish_cli]
 
 jobs:
   generate:
