@@ -90,7 +90,7 @@ jobs:
           rsync -avz examples/cli/* ../m3o-cli/example/
       
       - name: house cleaning remove unnecessary files/folders
-        working-directory: m3o-dart
+        working-directory: m3o-cli
         run: |
           # rm -rf .dart_tool .git .gitignore .packages pubspec.lock
       
