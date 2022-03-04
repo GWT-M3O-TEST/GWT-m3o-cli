@@ -23,7 +23,6 @@ jobs:
         with:
           repository: 'GWT-M3O-TEST/GWT-m3o'
           path: m3o
-          ref: ${{ github.ref }}
 
       - name: Check GWT-services repo
         uses: actions/checkout@v2
