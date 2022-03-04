@@ -77,14 +77,14 @@ jobs:
       
       - name: Generate M3O CLI
         working-directory: services
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/master'
         run: |
           rm -rf clients examples
           client-gen cli
 
       - name: Adjust generated things before pushing
         working-directory: services
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/beta'
+        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta'
         run: |
           # sync the examples to m3o-dart/example
           rsync -avz examples/cli/* ../m3o-cli/example/
