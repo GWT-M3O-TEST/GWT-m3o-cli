@@ -86,13 +86,13 @@ jobs:
         working-directory: services
         if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta'
         run: |
-          # sync the examples to m3o-dart/example
-          rsync -avz examples/cli/* ../m3o-cli/example/
+          # sync the examples to m3o-dart/examples
+          rsync -avz examples/cli/* ../m3o-cli/examples/
       
       - name: house cleaning remove unnecessary files/folders
         working-directory: m3o-cli
         run: |
-          # rm -rf .dart_tool .git .gitignore .packages pubspec.lock
+          # rm -rf .git .gitignore
       
       # https://stackoverflow.com/questions/58033366/how-to-get-current-branch-within-github-actions
       - name: Extract branch name
@@ -106,10 +106,10 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source_file: 'm3o-cli/example/'
+          source_file: 'm3o-cli/examples/'
           destination_repo: 'GWT-M3O-TEST/GWT-m3o-cli'
           destination_branch: ${{ steps.extract_branch.outputs.branch }}
-          destination_folder: 'example/'
+          destination_folder: 'examples/'
           git_server: 'github.com'
           user_email:  'danieljoudat@gmail.com'
           user_name: 'lambdaR'
