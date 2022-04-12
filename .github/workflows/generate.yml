@@ -8,79 +8,17 @@ jobs:
     name: build M3O CLI
     runs-on: ubuntu-latest
     steps:
-
-      - name: Set up Go 1.13
-        uses: actions/setup-go@v2
+      - name: Generate m3o-cli clients
+        uses: GWT-M3O-TEST/m3o-generator-action@v0.1.0
         with:
-          go-version: 1.13
-        id: go
-      
-      - name: Install Protoc
-        uses: arduino/setup-protoc@master
-      
-      - name: Check GWT-m3o repo
-        uses: actions/checkout@v2
-        with:
-          repository: 'GWT-M3O-TEST/GWT-m3o'
-          path: m3o
-
-      - name: Check GWT-services repo
-        uses: actions/checkout@v2
-        with:
-          repository: 'GWT-M3O-TEST/GWT-services'
+          target: 'cli'
           path: services
 
-      - name: Check micro repo
-        uses: actions/checkout@v2
-        with:
-          repository: 'micro/micro'
-          path: 'micro'
-          ref: 'master'
-      
       - name: Check GWT-m3o-cli repo
         uses: actions/checkout@v2
         with:
           repository: 'GWT-M3O-TEST/GWT-m3o-cli'
           path: m3o-cli
-      
-      - name: Enable caching
-        uses: actions/cache@v2
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
-
-      - name: Install protoc gen micro plugin
-        working-directory: micro/cmd/protoc-gen-micro
-        run: |
-          go get -u github.com/golang/protobuf/protoc-gen-go
-          go install
-      
-      - name: Install openapi plugin
-        working-directory: m3o/cmd/protoc-gen-openapi
-        run: |
-          go install
-
-      - name: Install generator
-        working-directory: m3o
-        run: |
-          # build the client generator
-          pwd
-          cd cmd/client-gen;
-          go install
-          cd ../../
-          # delete existing cmd directory
-          rm -rf ../services/cmd
-          # copy our command directory in
-          cp -r cmd ../services/
-      
-      - name: Generate M3O CLI
-        working-directory: services
-        if: github.ref == 'refs/heads/master'
-        run: |
-          rm -rf clients examples
-          client-gen cli
 
       - name: Adjust generated things before pushing
         working-directory: services
