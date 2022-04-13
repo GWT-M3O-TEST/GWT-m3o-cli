@@ -28,7 +28,7 @@ jobs:
        
         run: |
           # sync the examples to m3o-cli/examples
-          rsync -avz /examples/cli/* ../examples/
+          rsync -avz examples/cli/* ../examples/
       
       - name: house cleaning remove unnecessary files/folders
         working-directory: m3o-cli
