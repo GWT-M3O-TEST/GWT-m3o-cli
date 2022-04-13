@@ -25,10 +25,10 @@ jobs:
 
       - name: Adjust generated things before pushing
         working-directory: services
-        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta'
+       
         run: |
-          # sync the examples to m3o-dart/examples
-          rsync -avz examples/cli/* ../m3o-cli/examples/
+          # sync the examples to m3o-cli/examples
+          rsync -avz /github/workspace/services/examples/cli/* /github/workspace/m3o-cli/examples/
       
       - name: house cleaning remove unnecessary files/folders
         working-directory: m3o-cli
