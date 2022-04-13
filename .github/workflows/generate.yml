@@ -29,7 +29,7 @@ jobs:
         working-directory: services 
         run: |
           # sync the examples to m3o-cli/examples
-          rsync -avz examples/cli/* ../examples/
+          rsync -avz examples/cli/* ../m3o-cli/examples/
       
       - name: Add & Commit
         uses: EndBug/add-and-commit@v9.0.0
