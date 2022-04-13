@@ -24,35 +24,13 @@ jobs:
           services_path: services
 
       - name: Adjust generated things before pushing
-        working-directory: services
-       
+        working-directory: services 
         run: |
           # sync the examples to m3o-cli/examples
           rsync -avz examples/cli/* ../examples/
       
-      - name: house cleaning remove unnecessary files/folders
-        working-directory: m3o-cli
-        run: |
-          # rm -rf .git .gitignore
-      
-      # https://stackoverflow.com/questions/58033366/how-to-get-current-branch-within-github-actions
-      - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
-
-      - name: Push M3O CLI examples
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/beta'
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v9.0.0
         with:
-          source_file: 'm3o-cli/examples/'
-          destination_repo: 'GWT-M3O-TEST/GWT-m3o-cli'
-          destination_branch: ${{ steps.extract_branch.outputs.branch }}
-          destination_folder: 'examples/'
-          git_server: 'github.com'
-          user_email:  'danieljoudat@gmail.com'
-          user_name: 'lambdaR'
-          use_rsync: true
-          commit_message: 'Commit from GWT-M3O-TEST/GWT-m3o action'
+          message: Push to M3O-Cli repo
+          pathspec_error_handling: exitImmediately
