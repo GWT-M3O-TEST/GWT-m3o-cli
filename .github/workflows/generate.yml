@@ -24,7 +24,7 @@ jobs:
           services_path: services
 
       - name: Adjust generated things before pushing
-        working-directory: services
+        # working-directory: services
        
         run: |
           # sync the examples to m3o-cli/examples
