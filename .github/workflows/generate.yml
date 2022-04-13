@@ -24,11 +24,11 @@ jobs:
           services_path: services
 
       - name: Adjust generated things before pushing
-        # working-directory: services
+        working-directory: services
        
         run: |
           # sync the examples to m3o-cli/examples
-          rsync -avz /github/workspace/services/examples/cli/* /github/workspace/m3o-cli/examples/
+          rsync -avz /examples/cli/* ../examples/
       
       - name: house cleaning remove unnecessary files/folders
         working-directory: m3o-cli
