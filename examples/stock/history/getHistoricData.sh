@@ -1,0 +1,1 @@
+m3o stock history --date="2020-10-01" --stock="AAPL" 

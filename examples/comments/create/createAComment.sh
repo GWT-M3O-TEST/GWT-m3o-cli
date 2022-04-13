@@ -1,0 +1,1 @@
+m3o comments create --subject="New Comment" --text="This is my comment" 

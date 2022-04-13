@@ -1,0 +1,1 @@
+m3o notes create --title="New Note" --text="This is my note" 

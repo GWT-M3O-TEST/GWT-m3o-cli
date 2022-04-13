@@ -1,0 +1,1 @@
+m3o space create --object="<file bytes>" --name="images/file.jpg" --visibility="public" 

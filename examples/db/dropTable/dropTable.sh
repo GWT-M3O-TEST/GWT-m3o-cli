@@ -1,0 +1,1 @@
+m3o db drop table --table="example" 

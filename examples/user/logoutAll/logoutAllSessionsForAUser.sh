@@ -1,0 +1,1 @@
+m3o user logout all --user_id="user-1" 

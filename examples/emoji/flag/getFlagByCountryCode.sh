@@ -1,0 +1,1 @@
+m3o emoji flag --code="GB" 

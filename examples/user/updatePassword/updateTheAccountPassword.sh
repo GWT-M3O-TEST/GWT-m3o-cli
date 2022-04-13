@@ -1,0 +1,1 @@
+m3o user update password --confirmPassword="Password2" --userId="user-1" --oldPassword="Password1" --newPassword="Password2" 

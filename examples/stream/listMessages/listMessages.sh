@@ -1,0 +1,1 @@
+m3o stream list messages --channel="general" 

@@ -1,0 +1,1 @@
+m3o search delete index --index="customers" 
