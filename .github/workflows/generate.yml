@@ -20,7 +20,7 @@ jobs:
           path: services
 
       - name: Generate m3o-cli clients
-        uses: GWT-M3O-TEST/m3o-generator-action@v0.1.5
+        uses: m3o/m3o-generator-action@v0.2.0
         with:
           target: 'cli'
           services_path: services
